@@ -1,11 +1,24 @@
 const express = require("express");
 const config = require("config");
-const auth = require("../../middleware/auth");
+const { auth, checkUser } = require("../../middleware/auth");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 
+
+
+
+router.get('/', auth, async (req, res) => {
+	try {
+	  const user = await User.findById(req.user.id).select('-password');
+	  res.json(user);
+	} catch (err) {
+	  console.error(err.message);
+	  res.status(500).send('Server Error');
+	}
+  });
+  
 router.post("/", (req, res) => {
 	const { email, password } = req.body;
 
@@ -27,8 +40,8 @@ router.post("/", (req, res) => {
 				(err, token) => {
 					if (err) throw err;
 					res.json({
+						token,
 						user: {
-							token,
 							id: user.id,
 							name: user.name,
 							email: user.email,
@@ -40,9 +53,15 @@ router.post("/", (req, res) => {
 	});
 });
 
-router.get("/user", auth, (req, res) => {
-	User.findOne(req.user.id)
-		.select("-password")
-		.then((user) => res.json(user));
+// get current user logged in 
+router.get("/user", auth, async (req, res) => {
+	try {
+		const user = await User.findById(req.user.id).select("-password");
+		if (!user) throw Error("User does not exist");
+		res.json(user);
+	} catch (e) {
+		res.status(400).json({ msg: e.message });
+	}
 });
+
 module.exports = router;

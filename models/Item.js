@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 const festCardSchema = new schema({
+	user: {
+		type: schema.Types.ObjectId,
+		ref: "user",
+	},
 	festName: {
 		type: String,
 		required: true,
@@ -17,9 +21,10 @@ const festCardSchema = new schema({
 	festVotes: [
 		{
 			user: {
-				type: schema.Types.ObjectId
-			  }
-		}
+				type: schema.Types.ObjectId,
+				ref: "user",
+			},
+		},
 	],
 });
 
