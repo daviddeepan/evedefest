@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import HomeScreen from "./screens/HomeScreen";
@@ -11,6 +10,9 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { useEffect } from "react";
 import { loadUser } from "./actions/authAction";
+
+
+
 function App() {
 	useEffect(() => {
 		store.dispatch(loadUser());

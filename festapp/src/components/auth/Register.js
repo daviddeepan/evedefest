@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { register } from "../../actions/authAction";
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = ({ register, auth:{isAuthenticated} }) => {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -79,11 +79,11 @@ const Register = ({ register, isAuthenticated }) => {
 
 Register.propTypes = {
 	register: PropTypes.func.isRequired,
-	isAuthenticated: PropTypes.bool,
+	auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-	isAuthenticated: state.auth.isAuthenticated,
+	auth: state.auth,
 });
 
 export default connect(mapStateToProps, { register })(Register);

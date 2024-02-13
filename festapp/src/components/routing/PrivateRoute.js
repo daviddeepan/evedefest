@@ -1,11 +1,11 @@
 import React from "react";
-import { Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	const token = localStorage.getItem("token");
-	return token ? <Outlet/>: <Navigate to="/login" />;
+	return token ? <Outlet /> : <Navigate to="/login" />;
 };
 
 PrivateRoute.propTypes = {
