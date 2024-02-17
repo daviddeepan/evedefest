@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import FestList from "../components/Festlist";
 
+
+
 function HomeScreen({ getPosts, posts: { posts, loading } }) {
 	useEffect(() => {
 		getPosts();

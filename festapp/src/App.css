@@ -1,0 +1,151 @@
+body {
+	font-family: "inter regular";
+	font-size: 17px;
+}
+.festBody {
+	width: 351px;
+	height: 125px;
+	background-color: #e2fcf3;
+	border-radius: 6px;
+	margin: 10px auto;
+}
+
+ul,
+li,
+a {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+@font-face {
+	font-family: "inter regular";
+	src: url(../src/assets/fonts/Inter-Regular.ttf);
+}
+
+h1,
+h2,
+h3 {
+	font-weight: normal;
+	font-size: 1.2em;
+}
+
+.side-tag {
+	width: 15px;
+	height: 125px;
+	background-color: #ffba53;
+
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+
+.festBody h3,
+p {
+	margin: 0;
+	padding: 0;
+}
+
+.festBody button {
+	background: transparent;
+	outline: none;
+	border: none;
+}
+.festBody .fest-details {
+	grid-column: 3/13;
+	grid-row: 1;
+	margin: 10px 10px;
+}
+
+.festBody .fest-details p {
+	font-size: 15px;
+	color: rgba(0, 0, 0, 0.8);
+	padding: 1px;
+}
+
+.festBody .fest-details .inline-icon {
+	vertical-align: bottom;
+	font-size: 20px;
+}
+
+.festBody .upvotes {
+	margin: auto;
+	text-align: center;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+}
+/* mobile */
+
+li {
+	list-style-type: none;
+}
+
+/* small tablets */
+@media screen and (min-width: 620px) {
+	.festBody {
+		width: 99%;
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(40, 1fr);
+	}
+	.festBody .fest-details {
+		grid-column: 3/41;
+
+		grid-row: 1;
+		margin: 15px 10px;
+	}
+	.festBody .fest-details p {
+		font-size: 1em;
+		padding: 2px;
+	}
+}
+
+/* large tablets and laptops */
+@media screen and (min-width: 960px) {
+	.festBody {
+		width: 99%;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(40, 1fr);
+	}
+
+	.festBody .fest-details {
+		grid-column: 3/41;
+
+		grid-row: 1;
+		margin: 15px 10px;
+	}
+	.festBody .fest-details p {
+		font-size: 1em;
+		padding: 2px;
+	}
+}
+
+/* desktop*/
+@media screen and (min-width: 1200px) {
+	.festBody {
+		width: 99%;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(50, 1fr);
+	}
+
+	.festBody .fest-details {
+		grid-column: 3/51;
+
+		grid-row: 1;
+		margin: 15px 10px;
+	}
+
+	.festBody .fest-details p {
+		font-size: 1em;
+		padding: 2px;
+	}
+}

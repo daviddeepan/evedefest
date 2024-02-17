@@ -3,11 +3,8 @@ import { USER_LOADING, USER_LOADED, PROFILE_ERROR } from "./types";
 // Get current users profile
 export const getCurrentUser = () => async (dispatch, getState) => {
 	//User loading
-
 	dispatch({ type: USER_LOADING });
-
-	
-	const token =  getState().auth.token;
+	const token = getState().auth.token;
 	const config = {
 		headers: {
 			"Content-Type": "application/json",
@@ -28,7 +25,10 @@ export const getCurrentUser = () => async (dispatch, getState) => {
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,
-			payload: {msg:err.response.statusText, status: err.response.status}
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status,
+			},
 		});
 	}
 };

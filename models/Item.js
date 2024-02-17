@@ -10,6 +10,18 @@ const festCardSchema = new schema({
 		type: String,
 		required: true,
 	},
+	collegeName: {
+		type: String,
+		required: true,
+	},
+	festDateFrom: {
+		type: Date,
+		required: true,
+	},
+	festDateTo: {
+		type: Date,
+		required: true,
+	},
 	date: {
 		type: Date,
 		default: Date.now,
