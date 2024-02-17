@@ -17,6 +17,9 @@ router.post("/", auth, async (req, res) => {
 		user: req.user.id,
 		festName: req.body.festName,
 		location: req.body.location,
+		collegeName: req.body.collegeName,
+		festDateFrom: req.body.festDateFrom,
+		festDateTo: req.body.festDateTo,
 	});
 
 	newFestCard.save().then((item) => res.json(item));

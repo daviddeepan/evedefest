@@ -95,7 +95,7 @@ export const deletePost = (id) => async (dispatch, getState) => {
 //Add post
 
 export const addPost =
-	({ festName, location }) =>
+	({ festName, location, collegeName, festDateFrom, festDateTo }) =>
 	async (dispatch, getState) => {
 		const token = getState().auth.token;
 		const config = {
@@ -108,7 +108,13 @@ export const addPost =
 			config.headers["x-auth-token"] = token;
 		}
 
-		const body = JSON.stringify({ festName, location });
+		const body = JSON.stringify({
+			festName,
+			location,
+			collegeName,
+			festDateFrom,
+			festDateTo,
+		});
 
 		try {
 			const res = await axios.post(

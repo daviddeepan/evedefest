@@ -55,6 +55,18 @@ p {
 	grid-row: 1;
 	margin: 10px 10px;
 }
+
+.festBody .fest-details p {
+	font-size: 15px;
+	color: rgba(0, 0, 0, 0.8);
+	padding: 1px;
+}
+
+.festBody .fest-details .inline-icon {
+	vertical-align: bottom;
+	font-size: 20px;
+}
+
 .festBody .upvotes {
 	margin: auto;
 	text-align: center;
@@ -79,6 +91,16 @@ li {
 		display: grid;
 		grid-template-columns: repeat(40, 1fr);
 	}
+	.festBody .fest-details {
+		grid-column: 3/41;
+
+		grid-row: 1;
+		margin: 15px 10px;
+	}
+	.festBody .fest-details p {
+		font-size: 1em;
+		padding: 2px;
+	}
 }
 
 /* large tablets and laptops */
@@ -91,6 +113,17 @@ li {
 		display: grid;
 		grid-template-columns: repeat(40, 1fr);
 	}
+
+	.festBody .fest-details {
+		grid-column: 3/41;
+
+		grid-row: 1;
+		margin: 15px 10px;
+	}
+	.festBody .fest-details p {
+		font-size: 1em;
+		padding: 2px;
+	}
 }
 
 /* desktop*/
@@ -102,5 +135,17 @@ li {
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(50, 1fr);
+	}
+
+	.festBody .fest-details {
+		grid-column: 3/51;
+
+		grid-row: 1;
+		margin: 15px 10px;
+	}
+
+	.festBody .fest-details p {
+		font-size: 1em;
+		padding: 2px;
 	}
 }

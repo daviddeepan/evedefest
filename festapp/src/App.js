@@ -11,8 +11,6 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 import { useEffect } from "react";
 import { loadUser } from "./actions/authAction";
 
-
-
 function App() {
 	useEffect(() => {
 		store.dispatch(loadUser());

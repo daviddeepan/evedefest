@@ -4,48 +4,101 @@ import PropTypes from "prop-types";
 
 import { addPost } from "../actions/postAction";
 
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 const CreatePost = ({ addPost, auth }) => {
 	const [formData, setFormData] = useState({
 		festName: "",
 		location: "",
+		collegeName: "",
+		festDateFrom: "",
+		festDateTo: "",
 	});
 
-	const { festName, location } = formData;
+	const { festName, location, collegeName, festDateFrom, festDateTo } =
+		formData;
 
-	const onChange = (e) =>
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+	const onChange = (value, name) => {
+		setFormData({ ...formData, [name]: value });
+	};
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		addPost({ festName, location });
+		addPost({ festName, location, collegeName, festDateFrom, festDateTo });
 	};
 
 	return (
-		<Fragment>
-			<h1 className="large text-primary">Give us the details</h1>
-			<form className="form" onSubmit={(e) => onSubmit(e)}>
-				<div className="form-group">
-					<input
-						type="text"
-						placeholder="Fest Name"
-						name="festName"
-						value={festName}
-						onChange={(e) => onChange(e)}
-						required
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
+			<Fragment>
+				<h1 className="large text-primary">Give us the details</h1>
+				<form className="form" onSubmit={(e) => onSubmit(e)}>
+					<div className="form-group">
+						<input
+							type="text"
+							placeholder="Fest Name"
+							name="festName"
+							value={festName}
+							onChange={(e) =>
+								onChange(e.target.value, e.target.name)
+							}
+							required
+						/>
+					</div>
+					<div className="form-group">
+						<input
+							type="text"
+							placeholder="Location"
+							name="location"
+							value={location}
+							onChange={(e) =>
+								onChange(e.target.value, e.target.name)
+							}
+						/>
+					</div>
+					<div className="form-group">
+						<input
+							type="text"
+							placeholder="College/University"
+							name="collegeName"
+							value={collegeName}
+							onChange={(e) =>
+								onChange(e.target.value, e.target.name)
+							}
+						/>
+					</div>
+					<DatePicker
+						label="Fest Date From"
+						value={festDateFrom}
+						name="festDateFrom"
+						onChange={(value) => {
+							const date = new Date(value).toLocaleDateString(
+								"fr-FR"
+							);
+							onChange(date, "festDateFrom");
+						}}
+						format="LL"
 					/>
-				</div>
-				<div className="form-group">
-					<input
-						type="text"
-						placeholder="Location"
-						name="location"
-						value={location}
-						onChange={(e) => onChange(e)}
+					<DatePicker
+						label="Fest Date To"
+						value={festDateTo}
+						name="festDateTo"
+						onChange={(value) => {
+							const date = new Date(value).toLocaleDateString(
+								"fr-FR"
+							);
+							onChange(date, "festDateTo");
+						}}
+						format="LL"
 					/>
-				</div>
-				<input type="submit" className="btn btn-primary" value="Post" />
-			</form>
-		</Fragment>
+					<input
+						type="submit"
+						className="btn btn-primary"
+						value="Post"
+					/>
+				</form>
+			</Fragment>
+		</LocalizationProvider>
 	);
 };
 

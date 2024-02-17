@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { addLike } from "../actions/postAction";
 import { connect } from "react-redux";
@@ -6,13 +6,25 @@ import PropTypes from "prop-types";
 
 import ForwardRounded from "@mui/icons-material/ForwardRounded";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import "../App.css";
 
 function Festlist({
-	post: { _id, festName, festVotes, location },
+	post: {
+		_id,
+		festName,
+		festVotes,
+		location,
+		collegeName,
+		festDateFrom,
+		festDateTo,
+	},
 	addLike,
 	auth,
 }) {
+	const dateFrom = new Date(festDateFrom).toLocaleDateString("fr-FR");
+	const dateTo = new Date(festDateTo).toLocaleDateString("fr-FR");
+
 	return (
 		<div className="festBody grid">
 			<div className="side-tag"></div>
@@ -25,7 +37,14 @@ function Festlist({
 
 			<div className="fest-details">
 				<h3>{festName}</h3>
-				<p>{location}</p>
+				<p>{collegeName}</p>
+				<p>
+					<FmdGoodIcon className="inline-icon" />
+					{location}
+				</p>
+				<p>
+					{dateFrom} - {dateTo}
+				</p>
 			</div>
 		</div>
 	);
